@@ -14,6 +14,15 @@ class GPAcalPage extends StatefulWidget {
 class _GPAcalPageState extends State<GPAcalPage> {
   AppBar setAppbar() {
     return AppBar(
+      leading: Padding(
+        padding: const EdgeInsets.only(left: 30),
+        child: IconButton(
+            padding: EdgeInsets.zero,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back_ios_new)),
+      ),
       toolbarHeight: GPAapp.defaultHeightAppbar,
       backgroundColor: GPAapp.defaultColorsPages,
       centerTitle: true,
@@ -21,7 +30,7 @@ class _GPAcalPageState extends State<GPAcalPage> {
         padding: const EdgeInsets.all(20.0),
         child: FittedBox(
           fit: BoxFit.fitWidth,
-          child: GPAapp.setText('List GPA'),
+          child: GPAapp.setText('List GPA : ${GPAscoreDATA.listCalName.length}'),
         ),
       ),
       actions: [
@@ -29,7 +38,13 @@ class _GPAcalPageState extends State<GPAcalPage> {
           padding: const EdgeInsets.only(right: 40),
           child: IconButton(
               padding: EdgeInsets.zero,
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  GPAscoreDATA.listCalName.clear();
+                  GPAscoreDATA.listCalGrade.clear();
+                  GPAscoreDATA.listCalUnit.clear();
+                });
+              },
               icon: const Icon(
                 Icons.restore_from_trash,
                 color: Colors.red,
@@ -59,7 +74,13 @@ class _GPAcalPageState extends State<GPAcalPage> {
                               onPressed: () {}, icon: const Icon(Icons.edit))),
                       Expanded(
                           child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                  GPAscoreDATA.listCalName.removeAt(index);
+                                  GPAscoreDATA.listCalGrade.removeAt(index);
+                                  GPAscoreDATA.listCalUnit.removeAt(index);
+                                });
+                              },
                               icon: const Icon(Icons.delete))),
                     ],
                   ),

@@ -16,7 +16,6 @@ class _GPAPageState extends State<GPAPage> {
   final TextEditingController textCouseName = TextEditingController();
   String? selectUnit;
   String? selectGrade;
-
   int countPressed = 0;
 
   //AppBar
@@ -176,7 +175,7 @@ class _GPAPageState extends State<GPAPage> {
     );
   }
 
-  //Botton
+  //Bottom
   Widget setBottomNavBar() {
     return BottomAppBar(
       color: Colors.red,
