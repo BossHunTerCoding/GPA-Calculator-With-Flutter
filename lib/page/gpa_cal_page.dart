@@ -30,7 +30,8 @@ class _GPAcalPageState extends State<GPAcalPage> {
         padding: const EdgeInsets.all(20.0),
         child: FittedBox(
           fit: BoxFit.fitWidth,
-          child: GPAapp.setText('List GPA : ${GPAscoreDATA.listCalName.length}'),
+          child:
+              GPAapp.setText('List GPA : ${GPAscoreDATA.listCalName.length}'),
         ),
       ),
       actions: [
@@ -39,11 +40,65 @@ class _GPAcalPageState extends State<GPAcalPage> {
           child: IconButton(
               padding: EdgeInsets.zero,
               onPressed: () {
-                setState(() {
-                  GPAscoreDATA.listCalName.clear();
-                  GPAscoreDATA.listCalGrade.clear();
-                  GPAscoreDATA.listCalUnit.clear();
-                });
+                showDialog(
+                    context: context,
+                    builder: (builder) {
+                      return AlertDialog(
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: GPAapp.setText(
+                                  'Are your sure you want to clear all', 20),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: SizedBox(
+                                    width: 90,
+                                    child: FloatingActionButton(
+                                      hoverColor:
+                                          const Color.fromARGB(255, 163, 15, 5),
+                                      backgroundColor: Colors.red,
+                                      onPressed: () {
+                                        setState(() {
+                                          GPAscoreDATA.listCalName.clear();
+                                          GPAscoreDATA.listCalGrade.clear();
+                                          GPAscoreDATA.listCalUnit.clear();
+                                          Navigator.pop(context);
+                                        });
+                                      },
+                                      shape: const BeveledRectangleBorder(),
+                                      child: GPAapp.setText('Confirm', 20),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: SizedBox(
+                                    width: 90,
+                                    child: FloatingActionButton(
+                                      hoverColor:
+                                          const Color.fromARGB(255, 163, 15, 5),
+                                      backgroundColor: Colors.red,
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      shape: const BeveledRectangleBorder(),
+                                      child: GPAapp.setText('Cancel', 20),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      );
+                    });
               },
               icon: const Icon(
                 Icons.restore_from_trash,

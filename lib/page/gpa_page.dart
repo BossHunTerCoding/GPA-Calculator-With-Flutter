@@ -38,7 +38,9 @@ class _GPAPageState extends State<GPAPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const GPAcalPage()),
-              );
+              ).then((value) {
+                setState(() {});
+              });
             },
             elevation: 2.0,
             fillColor: Colors.red,
