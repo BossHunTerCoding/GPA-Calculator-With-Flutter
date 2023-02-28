@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'page/gpa_page.dart';
+import 'package:gpa_calculator/page/gpa_page.dart';
 
 void main() => {
       WidgetsFlutterBinding.ensureInitialized(),
@@ -33,6 +33,7 @@ class GPAapp extends StatefulWidget {
 
 class _GPAappState extends State<GPAapp> {
   ThemeData setThemeData() => ThemeData(
+        brightness: Brightness.dark,
         scaffoldBackgroundColor: GPAapp.defaultColorsPages,
         colorSchemeSeed: GPAapp.defaultColorsPages,
         inputDecorationTheme: const InputDecorationTheme(

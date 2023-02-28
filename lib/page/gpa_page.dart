@@ -104,8 +104,12 @@ class _GPAPageState extends State<GPAPage> {
       child: SizedBox(
         width: 375,
         child: DropdownButtonFormField(
+            dropdownColor: GPAapp.defaultColorsPages,
             decoration: const InputDecoration(
               labelText: 'Select Your Course Unit (required)',
+              labelStyle: TextStyle(
+                color: Colors.white,
+              ),
               prefixIcon: Icon(
                 Icons.format_underline_outlined,
                 color: Colors.amber,
@@ -116,6 +120,8 @@ class _GPAPageState extends State<GPAPage> {
               Icons.arrow_drop_down_rounded,
               color: Colors.red,
             ),
+            style: const TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold),
             value: selectUnit,
             items: GPAscoreDATA.listUnits
                 .map((String items) => DropdownMenuItem(
@@ -137,8 +143,12 @@ class _GPAPageState extends State<GPAPage> {
       child: SizedBox(
         width: 375,
         child: DropdownButtonFormField(
+            dropdownColor: GPAapp.defaultColorsPages,
             decoration: const InputDecoration(
               labelText: 'Select Your Course Grade (required)',
+              labelStyle: TextStyle(
+                color: Colors.white,
+              ),
               prefixIcon: Icon(
                 Icons.grade,
                 color: Colors.amber,
@@ -149,6 +159,8 @@ class _GPAPageState extends State<GPAPage> {
               Icons.arrow_drop_down_rounded,
               color: Colors.red,
             ),
+            style: const TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold),
             value: selectGrade,
             items: GPAscoreDATA.listGrades
                 .map((items) => DropdownMenuItem(
@@ -200,6 +212,7 @@ class _GPAPageState extends State<GPAPage> {
               context: context,
               builder: (builderUI) {
                 return AlertDialog(
+                    elevation: 1,
                     content: GPAapp.setText(
                         'Value Grade : $selectGrade (required) \nValue Unit : $selectUnit (required)',
                         20));

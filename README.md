@@ -1,4 +1,4 @@
-# gpa_calculator
+# GPA Calculator Flutter
 
 A GPA Calculator Flutter project.
 
