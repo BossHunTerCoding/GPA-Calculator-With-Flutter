@@ -24,7 +24,18 @@ class _GPAscorePageState extends State<GPAscorePage> {
         padding: const EdgeInsets.all(20.0),
         child: FittedBox(
           fit: BoxFit.fitWidth,
-          child: GPAapp.setText('GPA Summary'),
+          child: Row(
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(right: 8),
+                child: Icon(
+                  Icons.fitbit_sharp,
+                  size: 35,
+                ),
+              ),
+              GPAapp.setText('GPA Summary'),
+            ],
+          ),
         ),
       ),
     );

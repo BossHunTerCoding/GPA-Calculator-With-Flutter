@@ -1,6 +1,10 @@
 # GPA Calculator Flutter
 
-A GPA Calculator Flutter project.
+โปรแกรมสำหรับ **คำนวนเกรดเฉลี่ย (GPA)**
+
+### วิธีคิดคำนวนเกรดเฉลี่ย (GPA)
+นำเกรด (Grade) ที่ได้ของแต่ละวิชา (Course) มาคูณกับหน่วยกิต (Unit) ของวิชานั้นๆ
+แล้วนำมาบวกกันให้หมด จากนั้นหารด้วยผลรวมของหน่วยกิตทั้งหมด
 
 ## Getting Started
 
@@ -15,6 +19,3 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-### วิธีคิดคำนวนเกรดเฉลี่ย (GPA)
-ให้นำเกรดที่ได้ของแต่ละวิชามาคูณกับหน่วยกิตของวิชานั้นๆ แล้วนำมาบวกกันให้หมด 
-จากนั้นหารด้วยผลรวมของหน่วยกิตทั้งหมด
