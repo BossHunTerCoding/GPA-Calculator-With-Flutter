@@ -11,9 +11,8 @@ class GPAPage extends StatefulWidget {
 }
 
 class _GPAPageState extends State<GPAPage> {
-  late BuildContext builderUI;
-  late FocusNode selectFocus;
   final TextEditingController textCouseName = TextEditingController();
+  late FocusNode selectFocus;
   String? selectUnit;
   String? selectGrade;
   int countPressed = 0;
@@ -57,12 +56,10 @@ class _GPAPageState extends State<GPAPage> {
     //Banner
     var logoBanner = Padding(
       padding: const EdgeInsets.only(top: 20),
-      child: AspectRatio(
-        aspectRatio: 16 / 9,
-        child: Image.asset(
-          'assets/GPAICON.png',
-          scale: 0.25,
-        ),
+      child: Image.asset(
+        'assets/GPAICON.png',
+        height: 200,
+        width: 200,
       ),
     );
 
@@ -70,7 +67,7 @@ class _GPAPageState extends State<GPAPage> {
     var courseName = Padding(
       padding: const EdgeInsets.only(top: 20, bottom: 20),
       child: SizedBox(
-        width: 375,
+        width: 350,
         child: TextField(
           controller: textCouseName,
           focusNode: selectFocus,
@@ -102,7 +99,7 @@ class _GPAPageState extends State<GPAPage> {
     var courseUnit = Padding(
       padding: const EdgeInsets.only(top: 20, bottom: 20),
       child: SizedBox(
-        width: 375,
+        width: 350,
         child: DropdownButtonFormField(
             dropdownColor: GPAapp.defaultColorsPages,
             decoration: const InputDecoration(
@@ -141,7 +138,7 @@ class _GPAPageState extends State<GPAPage> {
     var courseGrade = Padding(
       padding: const EdgeInsets.only(top: 20, bottom: 20),
       child: SizedBox(
-        width: 375,
+        width: 350,
         child: DropdownButtonFormField(
             dropdownColor: GPAapp.defaultColorsPages,
             decoration: const InputDecoration(
@@ -177,14 +174,15 @@ class _GPAPageState extends State<GPAPage> {
     );
 
     return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(
-        children: [
-          logoBanner,
-          courseName,
-          courseGrade,
-          courseUnit,
-        ],
+      child: Center(
+        child: Column(
+          children: [
+            logoBanner,
+            courseName,
+            courseGrade,
+            courseUnit,
+          ],
+        ),
       ),
     );
   }
@@ -212,6 +210,9 @@ class _GPAPageState extends State<GPAPage> {
               context: context,
               builder: (builderUI) {
                 return AlertDialog(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
                     elevation: 1,
                     content: GPAapp.setText(
                         'Value Grade : $selectGrade (required) \nValue Unit : $selectUnit (required)',
@@ -245,7 +246,6 @@ class _GPAPageState extends State<GPAPage> {
 
   @override
   Widget build(BuildContext context) {
-    builderUI = context;
     return Scaffold(
       appBar: setAppbar(),
       body: setBody(),
