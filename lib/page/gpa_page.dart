@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gpa_calculator/main.dart';
 import 'package:gpa_calculator/page/gpa_cal_page.dart';
-import 'package:gpa_calculator/page/gpa_score_page.dart';
 
 class GPAPage extends StatefulWidget {
   const GPAPage({super.key});
@@ -44,7 +43,7 @@ class _GPAPageState extends State<GPAPage> {
             elevation: 2.0,
             fillColor: Colors.red,
             shape: const CircleBorder(),
-            child: GPAapp.setText('${GPAscoreDATA.listCalName.length}'),
+            child: GPAapp.setText('${GPAapp.listCalName.length}'),
           ),
         )
       ],
@@ -120,7 +119,7 @@ class _GPAPageState extends State<GPAPage> {
             style: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold),
             value: selectUnit,
-            items: GPAscoreDATA.listUnits
+            items: GPAapp.listUnits
                 .map((String items) => DropdownMenuItem(
                       value: items,
                       child: Text(items),
@@ -159,7 +158,7 @@ class _GPAPageState extends State<GPAPage> {
             style: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold),
             value: selectGrade,
-            items: GPAscoreDATA.listGrades
+            items: GPAapp.listGrades
                 .map((items) => DropdownMenuItem(
                       value: items,
                       child: Text(items),
@@ -214,16 +213,21 @@ class _GPAPageState extends State<GPAPage> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     elevation: 1,
-                    content: GPAapp.setText(
-                        'Value Grade : $selectGrade (required) \nValue Unit : $selectUnit (required)',
-                        20));
+                    content: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        columeAlertNull('Value Grade', ' Value Unit'),
+                        columeAlertNull(':', ':'),
+                        columeAlertNull('$selectGrade', '$selectUnit'),
+                      ],
+                    ));
               });
         } else {
           textCouseName.text == ''
               ? textCouseName.text = 'Couse Name ${countPressed += 1}'
               : null;
           setState(() {
-            GPAscoreDATA(
+            GPAapp(
               textCouseName.text,
               selectGrade!,
               selectUnit!,
@@ -235,6 +239,31 @@ class _GPAPageState extends State<GPAPage> {
           });
         }
       },
+    );
+  }
+
+  Widget columeAlertNull(String text1, String text2, {Color color = Colors.white}) {
+    var checkText1 = text1 == 'null' ? '(Required)' : text1;
+    var checkText2 = text2 == 'null' ? '(Required)' : text2;
+    var checkTextColor1 = text1 == 'null' ? Colors.red : color;
+    var checkTextColor2 = text2 == 'null' ? Colors.red : color;
+
+    return Padding(
+      padding: const EdgeInsets.all(3),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(3.0),
+            child: GPAapp.setText(checkText1, 20, checkTextColor1),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(3.0),
+            child: GPAapp.setText(checkText2, 20, checkTextColor2),
+          ),
+        ],
+      ),
     );
   }
 

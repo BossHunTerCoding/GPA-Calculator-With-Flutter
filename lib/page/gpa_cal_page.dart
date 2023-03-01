@@ -36,23 +36,23 @@ class _GPAcalPageState extends State<GPAcalPage> {
         padding: const EdgeInsets.all(20.0),
         child: FittedBox(
           fit: BoxFit.fitWidth,
-          child:
-              GPAapp.setText('List GPA : ${GPAscoreDATA.listCalName.length}'),
+          child: GPAapp.setText('List GPA : ${GPAapp.listCalName.length}'),
         ),
       ),
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 40),
           child: IconButton(
-              padding: EdgeInsets.zero,
-              onPressed: () {
-                alertClearAll();
-              },
-              icon: const Icon(
-                Icons.restore_from_trash,
-                color: Colors.red,
-                size: 35,
-              )),
+            padding: EdgeInsets.zero,
+            onPressed: () {
+              alertClearAll();
+            },
+            icon: const Icon(
+              Icons.restore_from_trash,
+              color: Colors.red,
+              size: 35,
+            ),
+          ),
         )
       ],
     );
@@ -61,7 +61,7 @@ class _GPAcalPageState extends State<GPAcalPage> {
   //Body
   Widget setBody() {
     return ListView.builder(
-        itemCount: GPAscoreDATA.listCalName.length,
+        itemCount: GPAapp.listCalName.length,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(4.0),
@@ -76,7 +76,7 @@ class _GPAcalPageState extends State<GPAcalPage> {
                   children: [
                     ListTile(
                       title: GPAapp.setText(
-                          'Course : ${GPAscoreDATA.listCalName[index]}\nGrade : ${GPAscoreDATA.listCalGrade[index]}\nUnit : ${GPAscoreDATA.listCalUnit[index]}',
+                          'Course : ${GPAapp.listCalName[index]}\nGrade : ${GPAapp.listCalGrade[index]}\nUnit : ${GPAapp.listCalUnit[index]}',
                           27),
                     ),
                     Row(
@@ -90,9 +90,9 @@ class _GPAcalPageState extends State<GPAcalPage> {
                         IconButton(
                             onPressed: () {
                               setState(() {
-                                GPAscoreDATA.listCalName.removeAt(index);
-                                GPAscoreDATA.listCalGrade.removeAt(index);
-                                GPAscoreDATA.listCalUnit.removeAt(index);
+                                GPAapp.listCalName.removeAt(index);
+                                GPAapp.listCalGrade.removeAt(index);
+                                GPAapp.listCalUnit.removeAt(index);
                               });
                             },
                             icon: const Icon(Icons.delete)),
@@ -124,7 +124,7 @@ class _GPAcalPageState extends State<GPAcalPage> {
         color: Colors.red,
       ),
       onPressed: () {
-        if (GPAscoreDATA.listCalName.isEmpty) {
+        if (GPAapp.listCalName.isEmpty) {
           showDialog(
               context: context,
               builder: (builderUI) {
@@ -152,9 +152,9 @@ class _GPAcalPageState extends State<GPAcalPage> {
           backgroundColor: Colors.red,
           onPressed: () {
             setState(() {
-              GPAscoreDATA.listCalName.clear();
-              GPAscoreDATA.listCalGrade.clear();
-              GPAscoreDATA.listCalUnit.clear();
+              GPAapp.listCalName.clear();
+              GPAapp.listCalGrade.clear();
+              GPAapp.listCalUnit.clear();
               Navigator.pop(context);
             });
           },
@@ -189,8 +189,8 @@ class _GPAcalPageState extends State<GPAcalPage> {
         builder: (builder) {
           return AlertDialog(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8.0),
-              ),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
             elevation: 1,
             content: Column(
               mainAxisSize: MainAxisSize.min,
@@ -198,10 +198,10 @@ class _GPAcalPageState extends State<GPAcalPage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child:
-                      FittedBox(
-                        fit : BoxFit.fitWidth,
-                        child: GPAapp.setText('Are your sure you want to clear all', 25)),
+                  child: FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: GPAapp.setText(
+                          'Are your sure you want to clear all', 25)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -272,7 +272,7 @@ class _GPAcalPageState extends State<GPAcalPage> {
               color: Colors.red,
             ),
             value: selectGrade,
-            items: GPAscoreDATA.listGrades
+            items: GPAapp.listGrades
                 .map((items) => DropdownMenuItem(
                       value: items,
                       child: Text(items),
@@ -307,7 +307,7 @@ class _GPAcalPageState extends State<GPAcalPage> {
               color: Colors.red,
             ),
             value: selectUnit,
-            items: GPAscoreDATA.listUnits
+            items: GPAapp.listUnits
                 .map((String items) => DropdownMenuItem(
                       value: items,
                       child: Text(items),
@@ -341,13 +341,11 @@ class _GPAcalPageState extends State<GPAcalPage> {
                     );
                   });
             } else {
-              textUpdate == ''
-                  ? textUpdate = GPAscoreDATA.listCalName[index]
-                  : null;
+              textUpdate == '' ? textUpdate = GPAapp.listCalName[index] : null;
               setState(() {
-                GPAscoreDATA.listCalName[index] = textUpdate;
-                GPAscoreDATA.listCalGrade[index] = selectGrade!;
-                GPAscoreDATA.listCalUnit[index] = selectUnit!;
+                GPAapp.listCalName[index] = textUpdate;
+                GPAapp.listCalGrade[index] = selectGrade!;
+                GPAapp.listCalUnit[index] = selectUnit!;
                 textUpdate = '';
                 selectGrade = null;
                 selectUnit = null;

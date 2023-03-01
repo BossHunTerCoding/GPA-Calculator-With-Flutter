@@ -11,6 +11,9 @@ class GPAscorePage extends StatefulWidget {
 }
 
 class _GPAscorePageState extends State<GPAscorePage> {
+  double sumGrade= GPAapp.sumGrade(GPAapp.listCalGrade, GPAapp.listCalUnit);
+  double sumUnit = GPAapp.sumUnit(GPAapp.listCalUnit);
+
   AppBar setAppbar() {
     return AppBar(
       automaticallyImplyLeading: false,
@@ -29,22 +32,93 @@ class _GPAscorePageState extends State<GPAscorePage> {
 
   Widget setBody() {
     return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
       child: Center(
-          child: Card(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: GPAapp.setText('Confirm'))
-            ],
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12.0),
+            ),
+            child: SizedBox(
+              width: 350,
+              height: 525,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  GPAapp.setText(
+                    'Grade Summary : $sumGrade',
+                  ),
+                  GPAapp.setText(
+                    'Unit Summary : $sumUnit',
+                  ),
+                  GPAapp.setText(
+                    'GPA Summary : ${GPAapp.sumGPA(sumGrade,sumUnit)}',
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
-      )),
+      ),
+    );
+  }
+
+  //Bottom
+  Widget setBottomNavBar() {
+    return BottomAppBar(
+      color: GPAapp.defaultColorsPages,
+      child: Container(
+        height: 75,
+      ),
+    );
+  }
+
+  Widget setFloatingButton() {
+    return SizedBox(
+      width: 200,
+      child: FloatingActionButton(
+        hoverColor: const Color.fromARGB(255, 163, 15, 5),
+        backgroundColor: Colors.red,
+        onPressed: () {
+          setState(() {
+            Navigator.pop(context);
+          });
+        },
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        child: FittedBox(
+          fit: BoxFit.fitWidth,
+          child: GPAapp.setText('Confirm'),
+        ),
+      ),
+    );
+  }
+
+  Widget columeAlertNull(String text1, String text2,
+      {Color color = Colors.white}) {
+    var checkText1 = text1 == 'null' ? '(Required)' : text1;
+    var checkText2 = text2 == 'null' ? '(Required)' : text2;
+    var checkTextColor1 = text1 == 'null' ? Colors.red : color;
+    var checkTextColor2 = text2 == 'null' ? Colors.red : color;
+
+    return Padding(
+      padding: const EdgeInsets.all(3),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(3.0),
+            child: GPAapp.setText(checkText1, 20, checkTextColor1),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(3.0),
+            child: GPAapp.setText(checkText2, 20, checkTextColor2),
+          ),
+        ],
+      ),
     );
   }
 
@@ -53,115 +127,9 @@ class _GPAscorePageState extends State<GPAscorePage> {
     return Scaffold(
       appBar: setAppbar(),
       body: setBody(),
+      bottomNavigationBar: setBottomNavBar(),
+      floatingActionButton: setFloatingButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
-  }
-}
-
-class GPAscoreDATA {
-  GPAscoreDATA(String courseName, String courseGrade, String courseUnit) {
-    listCalName.add(courseName);
-    listCalGrade.add(courseGrade);
-    listCalUnit.add(courseUnit);
-  }
-
-  static List<String> listUnits = [
-    '0.5',
-    '1',
-    '1.5',
-    '2',
-    '2.5',
-    '3',
-    '3.5',
-    '4',
-    '4.5',
-    '5',
-    '5.5',
-    '6',
-    '6.5',
-    '7',
-    '7.5',
-    '8',
-    '8.5',
-    '9',
-    '9.5',
-    '10',
-    '10.5',
-    '11',
-    '11.5',
-    '12',
-    '12.5',
-    '13',
-    '13.5',
-    '14',
-    '14.5',
-    '15',
-  ];
-  static List<String> listGrades = ['A', 'B+', 'B', 'C+', 'C', 'D+', 'D', 'F'];
-
-  static List<String> listCalName = [];
-  static List<String> listCalGrade = [];
-  static List<String> listCalUnit = [];
-
-  static double sumUnit(var list) {
-    double sumUnit = 0;
-    for (int index = 0; index <= list.length; index++) {
-      sumUnit += double.parse(list[index]);
-    }
-    return sumUnit;
-  }
-
-  static double sumGrade(List<String> listGrades, List<String> listUnits) {
-    double sumGrade = 0;
-    for (int index = 0; index <= listGrades.length; index++) {
-      var courseUnit = double.parse(listUnits[index]);
-      switch (listGrades[index]) {
-        case 'A':
-          {
-            sumGrade += 4 * courseUnit;
-          }
-          break;
-        case 'B+':
-          {
-            sumGrade += 3.5 * courseUnit;
-          }
-          break;
-        case 'B':
-          {
-            sumGrade += 3 * courseUnit;
-          }
-          break;
-        case 'C+':
-          {
-            sumGrade += 2.5 * courseUnit;
-          }
-          break;
-        case 'C':
-          {
-            sumGrade += 2 * courseUnit;
-          }
-          break;
-        case 'D+':
-          {
-            sumGrade += 1.5 * courseUnit;
-          }
-          break;
-        case 'D':
-          {
-            sumGrade += 1 * courseUnit;
-          }
-          break;
-        case 'F':
-          {
-            sumGrade += 0 * courseUnit;
-          }
-          break;
-      }
-    }
-    return sumGrade;
-  }
-
-  static double sumGPA(double sumGrade, double sumUnit) {
-    double sumGPA = sumGrade / sumUnit;
-    return double.parse(sumGPA.toStringAsFixed(2));
   }
 }
