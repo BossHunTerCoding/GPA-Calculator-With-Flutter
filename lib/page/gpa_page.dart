@@ -100,6 +100,9 @@ class _GPAPageState extends State<GPAPage> {
       child: SizedBox(
         width: 350,
         child: DropdownButtonFormField(
+            itemHeight: 100,
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
+            menuMaxHeight: 500,
             dropdownColor: GPAapp.defaultColorsPages,
             decoration: const InputDecoration(
               labelText: 'Select Your Course Unit (required)',
@@ -139,6 +142,9 @@ class _GPAPageState extends State<GPAPage> {
       child: SizedBox(
         width: 350,
         child: DropdownButtonFormField(
+            itemHeight: 100,
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
+            menuMaxHeight: 500,
             dropdownColor: GPAapp.defaultColorsPages,
             decoration: const InputDecoration(
               labelText: 'Select Your Course Grade (required)',
@@ -161,7 +167,9 @@ class _GPAPageState extends State<GPAPage> {
             items: GPAapp.listGrades
                 .map((items) => DropdownMenuItem(
                       value: items,
-                      child: Text(items),
+                      child: Text(
+                        items,
+                      ),
                     ))
                 .toList(),
             onChanged: (newValue) {
@@ -242,7 +250,8 @@ class _GPAPageState extends State<GPAPage> {
     );
   }
 
-  Widget columeAlertNull(String text1, String text2, {Color color = Colors.white}) {
+  Widget columeAlertNull(String text1, String text2,
+      {Color color = Colors.white}) {
     var checkText1 = text1 == 'null' ? '(Required)' : text1;
     var checkText2 = text2 == 'null' ? '(Required)' : text2;
     var checkTextColor1 = text1 == 'null' ? Colors.red : color;

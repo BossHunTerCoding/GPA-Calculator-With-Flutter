@@ -256,6 +256,9 @@ class _GPAcalPageState extends State<GPAcalPage> {
       child: SizedBox(
         width: 375,
         child: DropdownButtonFormField(
+            itemHeight: 100,
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
+            menuMaxHeight: 500,
             decoration: const InputDecoration(
               labelText: 'Select Your Course Grade (required)',
               labelStyle: TextStyle(
@@ -291,6 +294,9 @@ class _GPAcalPageState extends State<GPAcalPage> {
       child: SizedBox(
         width: 375,
         child: DropdownButtonFormField(
+            itemHeight: 100,
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
+            menuMaxHeight: 500,
             decoration: const InputDecoration(
               labelText: 'Select Your Course Unit (required)',
               labelStyle: TextStyle(

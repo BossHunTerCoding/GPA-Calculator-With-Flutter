@@ -11,7 +11,7 @@ class GPAscorePage extends StatefulWidget {
 }
 
 class _GPAscorePageState extends State<GPAscorePage> {
-  double sumGrade= GPAapp.sumGrade(GPAapp.listCalGrade, GPAapp.listCalUnit);
+  double sumGrade = GPAapp.sumGrade(GPAapp.listCalGrade, GPAapp.listCalUnit);
   double sumUnit = GPAapp.sumUnit(GPAapp.listCalUnit);
 
   AppBar setAppbar() {
@@ -46,15 +46,12 @@ class _GPAscorePageState extends State<GPAscorePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  GPAapp.setText(
-                    'Grade Summary : $sumGrade',
-                  ),
-                  GPAapp.setText(
-                    'Unit Summary : $sumUnit',
-                  ),
-                  GPAapp.setText(
-                    'GPA Summary : ${GPAapp.sumGPA(sumGrade,sumUnit)}',
-                  ),
+                  columeOutput(title: 'Grade Summary', output: sumGrade),
+                  columeOutput(title: 'Unit Summary', output: sumUnit),
+                  columeOutput(
+                      title: 'GPA',
+                      output: GPAapp.sumGPA(sumGrade, sumUnit),
+                      summary: true),
                 ],
               ),
             ),
@@ -96,28 +93,59 @@ class _GPAscorePageState extends State<GPAscorePage> {
     );
   }
 
-  Widget columeAlertNull(String text1, String text2,
-      {Color color = Colors.white}) {
-    var checkText1 = text1 == 'null' ? '(Required)' : text1;
-    var checkText2 = text2 == 'null' ? '(Required)' : text2;
-    var checkTextColor1 = text1 == 'null' ? Colors.red : color;
-    var checkTextColor2 = text2 == 'null' ? Colors.red : color;
-
+  Widget columeOutput({
+    required String title,
+    required var output,
+    bool? summary,
+  }) {
+    var outputWidget = summary == true
+        ? SizedBox(
+            width: 300,
+            height: 300,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GPAapp.setText(title, 50),
+                      GPAapp.setText(' : ', 50),
+                      GPAapp.setText('$output', 50),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: GPAapp.setText(GPAapp.checkGradeHonor(output))),
+                  ),
+                ],
+              ),
+            ),
+          )
+        : SizedBox(
+            width: 300,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Row(
+                  children: [
+                    GPAapp.setText(title, 16),
+                    GPAapp.setText(' : ', 16),
+                    GPAapp.setText('$output', 16),
+                  ],
+                ),
+              ),
+            ),
+          );
     return Padding(
-      padding: const EdgeInsets.all(3),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(3.0),
-            child: GPAapp.setText(checkText1, 20, checkTextColor1),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(3.0),
-            child: GPAapp.setText(checkText2, 20, checkTextColor2),
-          ),
-        ],
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        color: Colors.red,
+        child: outputWidget,
       ),
     );
   }

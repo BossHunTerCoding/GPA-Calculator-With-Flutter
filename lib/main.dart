@@ -169,4 +169,16 @@ class GPAapp {
     }
     return sumGrade;
   }
+
+  static String checkGradeHonor(double gpa) {
+    if (gpa >= 3.75) {
+      return 'First Class Honors Degree or gold coins';
+    } else if (gpa >= 3.5) {
+      return 'First Class Honors Degree';
+    } else if (gpa >= 3.25) {
+      return 'Bachelor\'s degree in the second class';
+    } else {
+      return 'Well done.';
+    }
+  }
 }
