@@ -77,13 +77,13 @@ class _GPAPageState extends State<GPAPage> {
               Icons.book_sharp,
               color: Colors.amber,
             ),
-            labelText: 'Couse Name',
+            labelText: 'Course Name',
             labelStyle: TextStyle(
               fontSize: 30,
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
-            hintText: 'What is your couse name? (optional)',
+            hintText: 'What is your course name? (optional)',
             hintStyle: TextStyle(
               fontSize: 15,
               color: Color.fromARGB(82, 255, 255, 255),
@@ -232,7 +232,7 @@ class _GPAPageState extends State<GPAPage> {
               });
         } else {
           textCouseName.text == ''
-              ? textCouseName.text = 'Couse Name ${countPressed += 1}'
+              ? textCouseName.text = 'Course Name ${countPressed += 1}'
               : null;
           setState(() {
             GPAapp(

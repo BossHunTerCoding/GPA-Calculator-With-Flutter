@@ -234,7 +234,7 @@ class _GPAcalPageState extends State<GPAcalPage> {
               Icons.book_sharp,
               color: Colors.amber,
             ),
-            labelText: 'Couse Name',
+            labelText: 'Course Name',
             labelStyle: TextStyle(
               fontSize: 30,
               color: Colors.white,
