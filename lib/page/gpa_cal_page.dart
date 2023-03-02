@@ -335,29 +335,22 @@ class _GPAcalPageState extends State<GPAcalPage> {
           hoverColor: const Color.fromARGB(255, 163, 15, 5),
           backgroundColor: Colors.red,
           onPressed: () {
-            if (selectGrade == null || selectUnit == null) {
-              showDialog(
-                  context: context,
-                  builder: (builderUI) {
-                    return AlertDialog(
-                      elevation: 1,
-                      content: GPAapp.setText(
-                          'Value Grade : $selectGrade (required) \nValue Unit : $selectUnit (required)',
-                          20),
-                    );
-                  });
-            } else {
-              textUpdate == '' ? textUpdate = GPAapp.listCalName[index] : null;
-              setState(() {
-                GPAapp.listCalName[index] = textUpdate;
-                GPAapp.listCalGrade[index] = selectGrade!;
-                GPAapp.listCalUnit[index] = selectUnit!;
-                textUpdate = '';
-                selectGrade = null;
-                selectUnit = null;
-                Navigator.pop(context);
-              });
-            }
+            textUpdate == '' ? textUpdate = GPAapp.listCalName[index] : null;
+            selectGrade == null
+                ? selectGrade = GPAapp.listCalGrade[index]
+                : selectGrade = selectGrade;
+            selectUnit == null
+                ? selectUnit = GPAapp.listCalUnit[index]
+                : selectUnit = selectUnit;
+            setState(() {
+              GPAapp.listCalName[index] = textUpdate;
+              GPAapp.listCalGrade[index] = selectGrade!;
+              GPAapp.listCalUnit[index] = selectUnit!;
+              textUpdate = '';
+              selectGrade = null;
+              selectUnit = null;
+              Navigator.pop(context);
+            });
           },
           shape: const BeveledRectangleBorder(),
           child: GPAapp.setText('Update', 20),
