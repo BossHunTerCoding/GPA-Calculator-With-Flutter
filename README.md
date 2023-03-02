@@ -13,7 +13,7 @@
 </p>
 <h1 align="center">GPA View List</h1>
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/109333136/222346673-f5bf0c6f-748b-4226-95ff-98cd1d057d3d.gif" alt="GPA_View_List" width="400" height="600"  
+    <img src="https://user-images.githubusercontent.com/109333136/222359315-d270de36-0d92-4d06-9dd1-346a162d4d8b.gif" alt="GPA_View_List" width="400" height="600"  
         style="display: block; margin: 0 auto" />
 </p>
 <h1 align="center">GPA Edit Grade</h1>
