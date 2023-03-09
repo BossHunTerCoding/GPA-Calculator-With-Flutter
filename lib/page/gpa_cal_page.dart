@@ -222,6 +222,8 @@ class _GPAcalPageState extends State<GPAcalPage> {
       child: SizedBox(
         width: 375,
         child: TextField(
+          keyboardType: const TextInputType.numberWithOptions(
+              signed: true, decimal: true),
           onChanged: (value) {
             setState(() {
               textUpdate = value;
