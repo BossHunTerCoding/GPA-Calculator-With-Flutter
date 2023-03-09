@@ -1,16 +1,18 @@
 # GPA Calculator Flutter
 
 โปรแกรมสำหรับ **คำนวนเกรดเฉลี่ย (GPA)**<br>
-## Link Download App:
-> File Apk: [GPA Calculator.apk](https://github.com/BossHunTerCoding/GPA-Calculator-With-Flutter/raw/master/app/apk/gpa_calculator.apk)
+## วิธีคิดคำนวนเกรดเฉลี่ย (GPA)
 
-## Link Youtube:
+>นำเกรด (Grade) ที่ได้ของแต่ละวิชา (Course) มาคูณกับหน่วยกิต (Unit) ของวิชานั้นๆ<br>
+แล้วนำมาบวกกันให้หมด จากนั้นหารด้วยผลรวมของหน่วยกิตทั้งหมด
+### Link Download App:
+> File APK: [GPA Calculator.apk](https://github.com/BossHunTerCoding/GPA-Calculator-With-Flutter/raw/master/app/apk/gpa_calculator.apk)
+
+### Link Youtube Review Code:
 > Youtube: [GPA Calculotor Review Code](#)
 
-### วิธีคิดคำนวนเกรดเฉลี่ย (GPA)
-
-นำเกรด (Grade) ที่ได้ของแต่ละวิชา (Course) มาคูณกับหน่วยกิต (Unit) ของวิชานั้นๆ<br>
-แล้วนำมาบวกกันให้หมด จากนั้นหารด้วยผลรวมของหน่วยกิตทั้งหมด
+### Link pub for flutter:
+> [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons)
 
 <h1 align="center">GPA Home</h1>
 <p align="center">
