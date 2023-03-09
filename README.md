@@ -1,4 +1,4 @@
-# GPA Calculator Flutter <img src="https://github.com/BossHunTerCoding/GPA-Calculator-With-Flutter/blob/master/assets/GPAICON.png?raw=true" alt="#" width="60" height="60" align="right">
+# GPA Calculator Flutter <img src="https://github.com/BossHunTerCoding/GPA-Calculator-With-Flutter/blob/master/assets/GPAICON.png?raw=true" width="60" height="60" align="right">
 
 - โปรแกรมสำหรับ **คำนวนเกรดเฉลี่ย (GPA)**<br>
 
