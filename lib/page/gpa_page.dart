@@ -68,8 +68,6 @@ class _GPAPageState extends State<GPAPage> {
       child: SizedBox(
         width: 350,
         child: TextField(
-          keyboardType: const TextInputType.numberWithOptions(
-              signed: true, decimal: true),
           controller: textCouseName,
           focusNode: selectFocus,
           style: const TextStyle(color: Colors.white),
